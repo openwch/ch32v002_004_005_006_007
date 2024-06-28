@@ -1,5 +1,5 @@
 
-南京沁恒微电子股份有限公司 2024.04
+南京沁恒微电子股份有限公司 2024.06
 最新资料请到我们的网站上查询
 https://wch.cn
 
@@ -35,6 +35,7 @@ https://wch.cn
   |      |      |      |      |-- EXTI0：外部中断线例程 
   |      |      |      |-- FLASH
   |      |      |      |      |-- FLASH_Program：FLASH的擦/读/写，以及快速编程 
+  |      |      |      |      |-- BootAsUser：Boot Flash 用作用户区
   |      |      |      |-- GPIO
   |      |      |      |      |-- GPIO_Toggle：GPIO例程  
   |      |      |      |-- I2C

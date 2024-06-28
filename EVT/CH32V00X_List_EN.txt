@@ -1,5 +1,5 @@
 
-Nanjing Qinheng Microelectronics Co., Ltd. 2024.04
+Nanjing Qinheng Microelectronics Co., Ltd. 2024.06
 
 https://wch-ic.com
 
@@ -35,6 +35,7 @@ Directory
   |      |      |      |      |-- EXTI0: external interrupt line routine
   |      |      |      |-- FLASH
   |      |      |      |      |-- FLASH_Program: FLASH erase/read/write, and fast programming  
+  |      |      |      |      |-- BootAsUser:Boot Flash used for user flash
   |      |      |      |-- GPIO 
   |      |      |      |      |-- GPIO_Toggle: GPIO routine 
   |      |      |      |-- I2C
