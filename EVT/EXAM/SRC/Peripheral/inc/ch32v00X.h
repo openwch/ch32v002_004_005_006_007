@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-#if !defined(CH32V002) && !defined(CH32V005) && !defined(CH32V006)&& !defined(CH32V007_M007)
+#if !defined(CH32V002) && !defined(CH32V004) && !defined(CH32V005) && !defined(CH32V006)&& !defined(CH32V007_M007)
 //#define CH32V002             /* CH32V002*/
 //#define CH32V004             /* CH32V004 */
 //#define CH32V005             /* CH32V005 */
@@ -36,7 +36,7 @@ extern "C" {
 
 /* CH32V00X Standard Peripheral Library version number */
 #define __CH32V00X_STDPERIPH_VERSION_MAIN   (0x01) /* [15:8] main version */
-#define __CH32V00X_STDPERIPH_VERSION_SUB    (0x00) /* [7:0] sub version */
+#define __CH32V00X_STDPERIPH_VERSION_SUB    (0x01) /* [7:0] sub version */
 #define __CH32V00X_STDPERIPH_VERSION        ( (__CH32V00X_STDPERIPH_VERSION_MAIN << 8)\
                                              |(__CH32V00X_STDPERIPH_VERSION_SUB << 0))
 
