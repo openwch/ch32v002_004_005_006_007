@@ -2,7 +2,7 @@
  * File Name          : main.c
  * Author             : WCH
  * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Date               : 2024/11/07
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -57,8 +57,7 @@ void OPA1_Init( void )
     OPA_InitStructure.POLL_CH1 = CHP0;
     OPA_InitStructure.POLL_CH2 = CHP1;
     OPA_InitStructure.POLL_CH3 = CHP2;
-    OPA_InitStructure.POLL_AT = OPA_POLL_AUTO_OFF;
-    OPA_InitStructure.SETUP_CFG = OPA_SETUP_CFG_2;
+    OPA_InitStructure.POLL_AT = OPA_POLL_AUTO_ON;
     OPA_InitStructure.NSEL = CHN0;
     OPA_InitStructure.OPA_HS = HS_ON;
     OPA_InitStructure.POLL_SEL = OPA_POLL_SEL_TIM2_CH4;
@@ -90,7 +89,7 @@ void ADC_Function_Init(void)
     ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;
     ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigInjecConv_Ext_PD1_PA2_OPA;
     ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
-    ADC_InitStructure.ADC_NbrOfChannel = 3;
+    ADC_InitStructure.ADC_NbrOfChannel = 1;
     ADC_Init(ADC1, &ADC_InitStructure);
     ADC_ExternalTrigInjectedConvCmd(ADC1, ENABLE);
     ADC_InjectedExTrigConvConfig(ADC1, ADC_InjectedExTrigConv_OPA);
@@ -108,12 +107,6 @@ void ADC_Function_Init(void)
     ADC_ITConfig(ADC1, ADC_IT_JEOC, ENABLE);
 
     ADC_Cmd(ADC1, ENABLE);
-
-    ADC_ResetCalibration(ADC1);
-    while(ADC_GetResetCalibrationStatus(ADC1));
-    ADC_StartCalibration(ADC1);
-    while(ADC_GetCalibrationStatus(ADC1));
-
 }
 
 /*********************************************************************
@@ -254,17 +247,17 @@ void ADC1_IRQHandler(void)
     {
         printf("JADC-%04d \r\n", ADC_GetInjectedConversionValue(ADC1, ADC_InjectedChannel_1));
     }
-    OPA_GetFlagStatus( OPA_FLAG_OUT_POLL_CH_1);
+    OPA_ClearFlag( OPA_FLAG_OUT_POLL_CH_1);
     if(OPA_GetFlagStatus( OPA_FLAG_OUT_POLL_CH_2))
     {
         printf("JADC-%04d \r\n", ADC_GetInjectedConversionValue(ADC1, ADC_InjectedChannel_2));
     }
-    OPA_GetFlagStatus( OPA_FLAG_OUT_POLL_CH_2) ;
+    OPA_ClearFlag( OPA_FLAG_OUT_POLL_CH_2) ;
     if(OPA_GetFlagStatus( OPA_FLAG_OUT_POLL_CH_3))
     {
         printf("JADC-%04d  \r\n", ADC_GetInjectedConversionValue(ADC1, ADC_InjectedChannel_3));
     }
-    OPA_GetFlagStatus( OPA_FLAG_OUT_POLL_CH_3);
+    OPA_ClearFlag( OPA_FLAG_OUT_POLL_CH_3);
     if(ADC_GetITStatus(ADC1, ADC_IT_JEOC))
     {
         ADC_val1=ADC_GetInjectedConversionValue(ADC1, ADC_InjectedChannel_1);

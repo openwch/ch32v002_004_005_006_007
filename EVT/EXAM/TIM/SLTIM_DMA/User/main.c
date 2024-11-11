@@ -2,7 +2,7 @@
  * File Name          : main.c
  * Author             : WCH
  * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Date               : 2024/07/31
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -15,7 +15,7 @@
  *SLTimer DMA routines:
  *SLTIM
  *SLTIM trigger the number of TIM1->ATRLR move to dbuf[X] by DMA.
- *
+ *Only for ch32V006, ch32V007, ch32M007 chips.
  */ 
 
 #include "debug.h"

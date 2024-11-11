@@ -1,5 +1,5 @@
 
-南京沁恒微电子股份有限公司 2024.06
+南京沁恒微电子股份有限公司 2024.11
 最新资料请到我们的网站上查询
 https://wch.cn
 
@@ -59,8 +59,6 @@ https://wch.cn
   |      |      |      |-- PWR
   |      |      |      |      |-- Sleep_Mode：低功耗，睡眠模式例程
   |      |      |      |      |-- Standby_Mode：低功耗，待机模式例程
-  |      |      |      |      |-- PVD_VoltageJudger：PVD电压判定例程
-  |      |      |      |      |-- PVD_Wakeup：STOP模式PVD中断唤醒例程
   |      |      |      |-- RCC
   |      |      |      |      |-- Get_CLK：获取system-HCLK-HB1-HB2时钟例程  
   |      |      |      |      |-- MCO：MCO引脚时钟输出例程
