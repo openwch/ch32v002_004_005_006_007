@@ -2,7 +2,7 @@
  * File Name          : system_ch32v00X.c
  * Author             : WCH
  * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Date               : 2024/11/04
  * Description        : CH32V00X Device Peripheral Access Layer System Source File.
 *********************************************************************************
 * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -80,8 +80,8 @@ void SystemInit (void)
     RCC->CFGR0 &= (uint32_t)0x68FF0000;
 
     tmp = RCC->CTLR;
-    tmp &= (uint32_t)0xFE16FFFB;
-    tmp |= (uint32_t)(1<<22)|(1<<20);
+    tmp &= (uint32_t)0xFED6FFFB;
+    tmp |= (uint32_t)(1<<20);
     RCC->CTLR = tmp;
 
     RCC->CTLR &= (uint32_t)0xFFFBFFFF;
@@ -302,8 +302,13 @@ static void SetSysClockTo_8MHz_HSE(void)
     {
         /*
          * If HSE fails to start-up, the application will have wrong clock
-     * configuration. User can add here some code to deal with this error
+         * configuration. User can add here some code to deal with this error
          */
+        /* Open PA1-PA2 GPIO function */
+        AFIO->PCFR1 &= ~(1<<17);
+        RCC->PB2PCENR &= ~RCC_AFIOEN;
+
+        RCC->CTLR &= ((uint32_t)~RCC_HSEON);   
     }
 }
 
@@ -361,8 +366,13 @@ static void SetSysClockTo_24MHz_HSE(void)
     {
         /*
          * If HSE fails to start-up, the application will have wrong clock
-     * configuration. User can add here some code to deal with this error
+         * configuration. User can add here some code to deal with this error
          */
+        /* Open PA1-PA2 GPIO function */
+        AFIO->PCFR1 &= ~(1<<17);
+        RCC->PB2PCENR &= ~RCC_AFIOEN;
+
+        RCC->CTLR &= ((uint32_t)~RCC_HSEON);   
     }
 }
 
@@ -430,8 +440,13 @@ static void SetSysClockTo_48MHz_HSE(void)
     {
         /*
          * If HSE fails to start-up, the application will have wrong clock
-     * configuration. User can add here some code to deal with this error
+         * configuration. User can add here some code to deal with this error
          */
+        /* Open PA1-PA2 GPIO function */
+        AFIO->PCFR1 &= ~(1<<17);
+        RCC->PB2PCENR &= ~RCC_AFIOEN;
+
+        RCC->CTLR &= ((uint32_t)~RCC_HSEON);   
     }
 }
 #endif

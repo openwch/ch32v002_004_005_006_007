@@ -67,10 +67,6 @@ void ADC_Function_Init(void)
     ADC_Cmd(ADC1, ENABLE);
 
     ADC_BufferCmd(ADC1, DISABLE); //disable buffer
-    ADC_ResetCalibration(ADC1);
-    while(ADC_GetResetCalibrationStatus(ADC1));
-    ADC_StartCalibration(ADC1);
-    while(ADC_GetCalibrationStatus(ADC1));
 }
 
 /*********************************************************************

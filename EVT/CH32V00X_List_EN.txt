@@ -1,5 +1,5 @@
 
-Nanjing Qinheng Microelectronics Co., Ltd. 2024.06
+Nanjing Qinheng Microelectronics Co., Ltd. 2024.11
 
 https://wch-ic.com
 
@@ -59,8 +59,6 @@ Directory
   |      |      |      |-- PWR
   |      |      |      |      |-- Sleep_Mode: low power, sleep mode routine
   |      |      |      |      |-- Standby_Mode: low power, standby mode routine
-  |      |      |      |      |-- PVD_VoltageJudger：PVD voltage Judger Routine
-  |      |      |      |      |-- PVD_Wakeup：STOP mode PVD wakeup MCU Routine
   |      |      |      |-- RCC
   |      |      |      |      |-- Get_CLK:Get system-HCLK-HB1-HB2 clock routine   
   |      |      |      |      |-- MCO: MCO pin clock output routine      
