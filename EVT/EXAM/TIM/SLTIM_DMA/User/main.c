@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/07/31
+ * Version            : V1.0.1
+ * Date               : 2025/01/10
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -60,7 +60,7 @@ void TIM3_INIT(void)
  *
  * @return  none
  */
-void TIM3_DMA_Init(DMA_Channel_TypeDef *DMA_CHx, u16 bufsize)
+void TIM3_DMA_Init(void)
 {
     DMA_InitTypeDef DMA_InitStructure = {0};
     DMA_InitTypeDef DMA_InitStructure1 = {0};
@@ -179,7 +179,7 @@ void DMA1_Channel1_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast
  */
 void DMA1_Channel1_IRQHandler(void)
 {
-    if(DMA_GetFlagStatus(DMA1_FLAG_TC1)==ENABLE)
+    if(DMA_GetFlagStatus(DMA1_FLAG_TC1) == SET)
     {
        printf("Channel1\r\n");
        DMA_ClearFlag(DMA1_FLAG_TC1);
@@ -196,7 +196,7 @@ void DMA1_Channel2_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast
  */
 void DMA1_Channel2_IRQHandler(void)
 {
-    if(DMA_GetFlagStatus(DMA1_FLAG_TC2)==ENABLE)
+    if(DMA_GetFlagStatus(DMA1_FLAG_TC2) == SET)
     {
        printf("Channel2\r\n");
        DMA_ClearFlag(DMA1_FLAG_TC2);
@@ -213,7 +213,7 @@ void DMA1_Channel3_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast
  */
 void DMA1_Channel3_IRQHandler(void)
 {
-    if(DMA_GetFlagStatus(DMA1_FLAG_TC3)==ENABLE)
+    if(DMA_GetFlagStatus(DMA1_FLAG_TC3) == SET)
     {
 
        printf("Channel3\r\n");
@@ -245,7 +245,7 @@ int main(void)
     printf( "CFGR2:%08x\r\n", *(u32*)(0x40022030) );
 
     TIM3_INIT();
-    TIM3_DMA_Init(DMA1_Channel1,3);
+    TIM3_DMA_Init();
     TIM_DMACmd(TIM3, TIM_DMA_CC3, ENABLE);
     TIM_Cmd(TIM3, ENABLE);
 

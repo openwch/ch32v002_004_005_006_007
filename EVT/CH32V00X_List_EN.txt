@@ -1,5 +1,5 @@
 
-Nanjing Qinheng Microelectronics Co., Ltd. 2024.11
+Nanjing Qinheng Microelectronics Co., Ltd. 2025.01
 
 https://wch-ic.com
 
@@ -24,10 +24,13 @@ Directory
   |      |      |      |      |-- Auto_Injection: automatic injection mode routine
   |      |      |      |      |-- Discontinuous_mode: discontinuous mode routine
   |      |      |      |      |-- ExtLines_Trigger: external lines trigger ADC conversion routine
-  |      |      |      |      |-- TIM Trigger:TIM trigger ADC conversion routine
-  |      |      |      |      |-- SLTIM_Trigger:  Streamlined Timer-Triggered ADC conversion routine
+  |      |      |      |      |-- TIM Trigger: TIM trigger ADC conversion routine
+  |      |      |      |      |-- SLTIM_Trigger: Streamlined Timer-Triggered ADC conversion routine
   |      |      |      |-- APPLICATION
-  |      |      |      |      |-- SoftUART：I/O port simulation serial port routine 
+  |      |      |      |      |-- SoftUART: I/O port simulation serial port routine 
+  |      |      |      |      |-- Motor
+  |      |      |      |      |      |-- Electric_Fan:Application of medium and low speed fans based on FOC three-phase brushless motor
+  |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM: Memory to memory mode routine
   |      |      |      |      |-- DMA_MEM2PERIP: Memory to peripheral mode, and peripheral to memory mode routine, see peripheral sub-routine
@@ -47,6 +50,9 @@ Directory
   |      |      |      |      |-- I2C_7bit_Interrupt_Mode: Send/receive routine using interrupts
   |      |      |      |-- IAP
   |      |      |      |      |-- V00X_APP:APP go to IAP routine  
+  |      |      |      |-- INT
+  |      |      |      |      |-- Interrupt_VTF：use VTF IRQ interrupt routine  
+  |      |      |      |      |-- VectorInRAM：Interrupt routines for the interrupt vector table in RAM
   |      |      |      |-- IWDG
   |      |      |      |      |-- IWDG: independent watchdog routine
   |      |      |      |-- OPA 
@@ -85,7 +91,12 @@ Directory
   |      |      |      |      |-- TIM_DMA: timer DMA routine
   |      |      |      |      |-- SLTIM_DMA: Streamlining Timers DMA routine
   |      |      |      |      |-- Encode:Timer encoder mode routines
-  |      |      |      |-- TOUCHKEY：touchkey detection routine
+  |      |      |      |-- TOUCHKEY
+  |      |      |      |      |-- TOUCHKEY: touchkey detection routine
+  |      |      |      |      |-- Touch_EX001：Comprehensive demonstration of touch keys
+  |      |      |      |      |-- Touch_EX002：8 Key Touch Routines 
+  |      |      |      |      |-- TKYLIB：Touch Button Library
+  |      |      |      |      |-- DOC_SCH_PCB: Schematic diagrams and instructions for use 
   |      |      |      |-- USART
   |      |      |      |      |-- USART_DMA: USART DMA, master/slave mode transceiver routine
   |      |      |      |      |-- USART_HalfDuplex: single wire half duplex mode, master/slave mode transceiver routine

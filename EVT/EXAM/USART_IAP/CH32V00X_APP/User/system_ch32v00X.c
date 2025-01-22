@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : system_ch32v00X.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/04
+ * Version            : V1.0.1
+ * Date               : 2025/01/13
  * Description        : CH32V00X Device Peripheral Access Layer System Source File.
 *********************************************************************************
 * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -18,8 +18,8 @@
 */
 
 //#define SYSCLK_FREQ_8MHz_HSI    8000000
-//#define SYSCLK_FREQ_24MHZ_HSI   HSI_VALUE
-#define SYSCLK_FREQ_48MHZ_HSI   48000000
+#define SYSCLK_FREQ_24MHZ_HSI   HSI_VALUE
+//#define SYSCLK_FREQ_48MHZ_HSI   48000000
 //#define SYSCLK_FREQ_8MHz_HSE    8000000
 //#define SYSCLK_FREQ_24MHz_HSE   HSE_VALUE
 //#define SYSCLK_FREQ_48MHz_HSE   48000000

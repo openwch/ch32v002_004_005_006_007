@@ -51,7 +51,7 @@
 							<option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.saverestore.1020286369" name="Small prologue/epilogue (-msave-restore)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.saverestore" useByScannerDiscovery="false" value="true" valueType="boolean"/>
 							<option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.rvGcc.1918374174" name="RISC-V Compiler" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.rvGcc" value="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.rvGcc.12" valueType="enumerated"/>
 							<option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.mnodiv.289580010" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.mnodiv" value="true" valueType="boolean"/>
-							<option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.isa.zmmul.1718240750" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.isa.zmmul" value="true" valueType="boolean"/>
+							<option id="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.isa.zmmul.1718240750" name="Multiplication subset of the M extension (Zmmul)" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.option.target.isa.zmmul" value="true" valueType="boolean"/>
 							<targetPlatform archList="all" binaryParser="org.eclipse.cdt.core.ELF" id="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform.1944008784" isAbstract="false" osList="all" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.targetPlatform"/>
 							<builder buildPath="${workspace_loc:/${ProjName}}/obj" id="ilg.gnumcueclipse.managedbuild.cross.riscv.builder.1421508906" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.builder"/>
 							<tool id="ilg.gnumcueclipse.managedbuild.cross.riscv.tool.assembler.1244756189" name="GNU RISC-V Cross Assembler" superClass="ilg.gnumcueclipse.managedbuild.cross.riscv.tool.assembler">
@@ -121,12 +121,11 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
-						<entry excluding="Startup|Peripheral|Ld|Debug|Core" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
+						<entry excluding="Peripheral|Ld|Debug|Core" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name=""/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Debug"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Ld"/>
-						<entry excluding="src/ch32v00x_opa.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Peripheral"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Startup"/>
+						<entry flags="VALUE_WORKSPACE_PATH" kind="sourcePath" name="Peripheral"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -148,4 +147,5 @@
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="refreshScope"/>
 </cproject>
