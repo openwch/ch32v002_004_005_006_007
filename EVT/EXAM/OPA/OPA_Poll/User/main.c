@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/07
+ * Version            : V1.0.1
+ * Date               : 2025/01/08
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -54,9 +54,9 @@ void OPA1_Init( void )
     OPA_InitStructure.Mode = OUT_IO_OUT0;
     OPA_InitStructure.POLL_NUM = CHP_POLL_NUM_3;
     OPA_InitStructure.PSEL_POLL = CHP_OPA_POLL_ON;
-    OPA_InitStructure.POLL_CH1 = CHP0;
-    OPA_InitStructure.POLL_CH2 = CHP1;
-    OPA_InitStructure.POLL_CH3 = CHP2;
+    OPA_InitStructure.POLL_CH1 = OPA_POLL_CH1_PA2;
+    OPA_InitStructure.POLL_CH2 = OPA_POLL_CH2_PD7;
+    OPA_InitStructure.POLL_CH3 = OPA_POLL_CH3_PD3;
     OPA_InitStructure.POLL_AT = OPA_POLL_AUTO_ON;
     OPA_InitStructure.NSEL = CHN0;
     OPA_InitStructure.OPA_HS = HS_ON;

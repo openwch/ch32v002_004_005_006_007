@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_adc.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/06
+ * Version            : V1.0.1
+ * Date               : 2024/12/23
  * Description        : This file contains all the functions prototypes for the
  *                      ADC firmware library.
  *********************************************************************************
@@ -74,11 +74,9 @@ typedef struct
 #define ADC_Channel_7                                  ((uint8_t)0x07)
 #define ADC_Channel_8                                  ((uint8_t)0x08)
 #define ADC_Channel_9                                  ((uint8_t)0x09)
-#define ADC_Channel_10                                 ((uint8_t)0x0A)
 
 #define ADC_Channel_Vrefint                            ((uint8_t)ADC_Channel_8)
 #define ADC_Channel_OPA                                ((uint8_t)ADC_Channel_9)
-#define ADC_Channel_Vcalint                            ((uint8_t)ADC_Channel_10)
 
 /* ADC_sampling_time */
 #define ADC_SampleTime_CyclesMode0                     ((uint8_t)0x00)

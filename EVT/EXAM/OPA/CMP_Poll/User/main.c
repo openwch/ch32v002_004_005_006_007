@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2025/01/08
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -72,9 +72,9 @@ void CMP_Init( void )
     CMP_InitStructure.CNT_IE= CMP_CNT_IE_ON;
 #endif
 
-    CMP_InitStructure.POLL_CH1 = CMP_CHP0;
-    CMP_InitStructure.POLL_CH2 = CMP_CHP1;
-    CMP_InitStructure.POLL_CH3 = CMP_CHP2;
+    CMP_InitStructure.POLL_CH1 = CMP_POLL_CH1_PC5;
+    CMP_InitStructure.POLL_CH2 = CMP_POLL_CH2_PB3;
+    CMP_InitStructure.POLL_CH3 = CMP_POLL_CH3_PD2;
     CMP_InitStructure.CMP_Out_Mode = OUT_IO0;
 
     OPA_CMP1_Init(&CMP_InitStructure);

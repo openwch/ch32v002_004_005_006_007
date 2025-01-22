@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_adc.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/06
+ * Version            : V1.0.1
+ * Date               : 2025/01/07
  * Description        : This file provides all the ADC firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -88,7 +88,6 @@
 #define ISQR_JL_Reset                    ((uint32_t)0xFFCFFFFF)
 
 /* ADC SMPx mask */
-#define SAMPTR1_SMP_Set                  ((uint32_t)0x00000007)
 #define SAMPTR2_SMP_Set                  ((uint32_t)0x00000007)
 
 /* ADC IDATARx registers offset */
@@ -106,8 +105,11 @@
  */
 void ADC_DeInit(ADC_TypeDef *ADCx)
 {
-    RCC_PB2PeriphResetCmd(RCC_PB2Periph_ADC1, ENABLE);
-    RCC_PB2PeriphResetCmd(RCC_PB2Periph_ADC1, DISABLE);
+    if(ADCx == ADC1)
+	{
+		RCC_PB2PeriphResetCmd(RCC_PB2Periph_ADC1, ENABLE);
+		RCC_PB2PeriphResetCmd(RCC_PB2Periph_ADC1, DISABLE);
+	}
 }
 
 /*********************************************************************
@@ -353,7 +355,6 @@ void ADC_DiscModeCmd(ADC_TypeDef *ADCx, FunctionalState NewState)
  *            ADC_Channel_7 - ADC Channel7 selected.
  *            ADC_Channel_Vrefint - ADC Channel8 selected.
  *            ADC_Channel_OPA - ADC Channel9 selected.
- *            ADC_Channel_Vcalint - ADC Channel10 selected.
  *          Rank - The rank in the regular group sequencer.
  *            This parameter must be between 1 to 16.
  *          ADC_SampleTime - The sample time value to be set for the selected channel.
@@ -380,24 +381,12 @@ void ADC_RegularChannelConfig(ADC_TypeDef *ADCx, uint8_t ADC_Channel, uint8_t Ra
 {
     uint32_t tmpreg1 = 0, tmpreg2 = 0;
 
-    if(ADC_Channel > ADC_Channel_9)
-    {
-        tmpreg1 = ADCx->SAMPTR1;
-        tmpreg2 = SAMPTR1_SMP_Set << (3 * (ADC_Channel - 10));
-        tmpreg1 &= ~tmpreg2;
-        tmpreg2 = (uint32_t)ADC_SampleTime << (3 * (ADC_Channel - 10));
-        tmpreg1 |= tmpreg2;
-        ADCx->SAMPTR1 = tmpreg1;
-    }
-    else
-    {
-        tmpreg1 = ADCx->SAMPTR2;
-        tmpreg2 = SAMPTR2_SMP_Set << (3 * ADC_Channel);
-        tmpreg1 &= ~tmpreg2;
-        tmpreg2 = (uint32_t)ADC_SampleTime << (3 * ADC_Channel);
-        tmpreg1 |= tmpreg2;
-        ADCx->SAMPTR2 = tmpreg1;
-    }
+    tmpreg1 = ADCx->SAMPTR2;
+    tmpreg2 = SAMPTR2_SMP_Set << (3 * ADC_Channel);
+    tmpreg1 &= ~tmpreg2;
+    tmpreg2 = (uint32_t)ADC_SampleTime << (3 * ADC_Channel);
+    tmpreg1 |= tmpreg2;
+    ADCx->SAMPTR2 = tmpreg1;
 
     if(Rank < 7)
     {
@@ -630,7 +619,6 @@ FlagStatus ADC_GetSoftwareStartInjectedConvCmdStatus(ADC_TypeDef *ADCx)
  *            ADC_Channel_7 - ADC Channel7 selected.
  *            ADC_Channel_Vrefint - ADC Channel8 selected.
  *            ADC_Channel_OPA - ADC Channel9 selected.
- *            ADC_Channel_Vcalint - ADC Channel10 selected.
  *          Rank - The rank in the regular group sequencer.
  *            This parameter must be between 1 to 16.
  *          ADC_SampleTime - The sample time value to be set for the selected channel.
@@ -657,24 +645,12 @@ void ADC_InjectedChannelConfig(ADC_TypeDef *ADCx, uint8_t ADC_Channel, uint8_t R
 {
     uint32_t tmpreg1 = 0, tmpreg2 = 0, tmpreg3 = 0;
 
-    if(ADC_Channel > ADC_Channel_9)
-    {
-        tmpreg1 = ADCx->SAMPTR1;
-        tmpreg2 = SAMPTR1_SMP_Set << (3 * (ADC_Channel - 10));
-        tmpreg1 &= ~tmpreg2;
-        tmpreg2 = (uint32_t)ADC_SampleTime << (3 * (ADC_Channel - 10));
-        tmpreg1 |= tmpreg2;
-        ADCx->SAMPTR1 = tmpreg1;
-    }
-    else
-    {
-        tmpreg1 = ADCx->SAMPTR2;
-        tmpreg2 = SAMPTR2_SMP_Set << (3 * ADC_Channel);
-        tmpreg1 &= ~tmpreg2;
-        tmpreg2 = (uint32_t)ADC_SampleTime << (3 * ADC_Channel);
-        tmpreg1 |= tmpreg2;
-        ADCx->SAMPTR2 = tmpreg1;
-    }
+    tmpreg1 = ADCx->SAMPTR2;
+    tmpreg2 = SAMPTR2_SMP_Set << (3 * ADC_Channel);
+    tmpreg1 &= ~tmpreg2;
+    tmpreg2 = (uint32_t)ADC_SampleTime << (3 * ADC_Channel);
+    tmpreg1 |= tmpreg2;
+    ADCx->SAMPTR2 = tmpreg1;
 
     tmpreg1 = ADCx->ISQR;
     tmpreg3 = (tmpreg1 & ISQR_JL_Set) >> 20;
@@ -870,7 +846,6 @@ void ADC_AnalogWatchdog2ThresholdsConfig(ADC_TypeDef *ADCx, uint16_t HighThresho
  *            ADC_Channel_7 - ADC Channel7 selected.
  *            ADC_Channel_Vrefint - ADC Channel8 selected.
  *            ADC_Channel_OPA - ADC Channel9 selected.
- *            ADC_Channel_Vcalint - ADC Channel10 selected.
  *
  * @return  None
  */
@@ -1108,7 +1083,6 @@ void ADC_InjectedExTrigConvConfig(ADC_TypeDef *ADCx, uint32_t InjectedExTrigConv
  *            ADC_Channel_7 - ADC Channel7 selected.
  *            ADC_Channel_Vrefint - ADC Channel8 selected.
  *            ADC_Channel_OPA - ADC Channel9 selected.
- *            ADC_Channel_Vcalint - ADC Channel10 selected.
  *          NewState - ENABLE or DISABLE.
  *
  * @return  none

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X.h
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/07
+ * Version            : V1.0.1
+ * Date               : 2024/12/23
  * Description        : CH32V00X Device Peripheral Access Layer Header File.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -38,7 +38,7 @@ extern "C" {
 
 /* CH32V00X Standard Peripheral Library version number */
 #define __CH32V00X_STDPERIPH_VERSION_MAIN   (0x01) /* [15:8] main version */
-#define __CH32V00X_STDPERIPH_VERSION_SUB    (0x02) /* [7:0] sub version */
+#define __CH32V00X_STDPERIPH_VERSION_SUB    (0x03) /* [7:0] sub version */
 #define __CH32V00X_STDPERIPH_VERSION        ( (__CH32V00X_STDPERIPH_VERSION_MAIN << 8)\
                                              |(__CH32V00X_STDPERIPH_VERSION_SUB << 0))
 
@@ -99,7 +99,7 @@ typedef struct
     __IO uint32_t STATR;
     __IO uint32_t CTLR1;
     __IO uint32_t CTLR2;
-    __IO uint32_t SAMPTR1;
+    uint32_t RESERVED;
     __IO uint32_t SAMPTR2;
     __IO uint32_t IOFR1;
     __IO uint32_t IOFR2;
@@ -542,12 +542,6 @@ typedef struct
 #define ADC_EXTTRIG                             ((uint32_t)0x00100000) /* External Trigger Conversion mode for regular channels */
 #define ADC_JSWSTART                            ((uint32_t)0x00200000) /* Start Conversion of injected channels */
 #define ADC_SWSTART                             ((uint32_t)0x00400000) /* Start Conversion of regular channels */
-
-/******************  Bit definition for ADC_SAMPTR1 register  *******************/
-#define ADC_SMP10                               ((uint32_t)0x00000007) /* SMP10[2:0] bits (Channel 10 Sample time selection) */
-#define ADC_SMP10_0                             ((uint32_t)0x00000001) /* Bit 0 */
-#define ADC_SMP10_1                             ((uint32_t)0x00000002) /* Bit 1 */
-#define ADC_SMP10_2                             ((uint32_t)0x00000004) /* Bit 2 */
 
 /******************  Bit definition for ADC_SAMPTR2 register  *******************/
 #define ADC_SMP0                                ((uint32_t)0x00000007) /* SMP0[2:0] bits (Channel 0 Sample time selection) */
@@ -1212,7 +1206,6 @@ typedef struct
 /*******************  Bit definition for FLASH_CTLR register  *******************/
 #define FLASH_CTLR_PER                          ((uint16_t)0x0002)     /* Page Erase 1KByte*/
 #define FLASH_CTLR_MER                          ((uint16_t)0x0004)     /* Mass Erase */
-#define FLASH_CTLR_OPTPG                        ((uint16_t)0x0010)     /* Option Byte Programming */
 #define FLASH_CTLR_OPTER                        ((uint16_t)0x0020)     /* Option Byte Erase */
 #define FLASH_CTLR_STRT                         ((uint16_t)0x0040)     /* Start */
 #define FLASH_CTLR_LOCK                         ((uint16_t)0x0080)     /* Lock */

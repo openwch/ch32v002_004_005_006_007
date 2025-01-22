@@ -1,5 +1,5 @@
 
-南京沁恒微电子股份有限公司 2024.11
+南京沁恒微电子股份有限公司 2025.01
 最新资料请到我们的网站上查询
 https://wch.cn
 
@@ -28,6 +28,9 @@ https://wch.cn
   |      |      |      |      |-- SLTIM_Trigger：精简定时器触发ADC转换例程
   |      |      |      |-- APPLICATION
   |      |      |      |      |-- SoftUART：I/O口模拟串口例程 
+  |      |      |      |      |-- Motor
+  |      |      |      |      |      |-- Electric_Fan：基于FOC三相无刷电机的中低速风扇应用
+  |      |      |      |      |      |-- Voilent_Fan：基于BLDC的高速风扇应用
   |      |      |      |-- DMA
   |      |      |      |      |-- DMA_MEM2MEM：储存器到储存器模式例程
   |      |      |      |      |-- DMA_MEM2PERIP：储存器到外设模式、外设到储存器模式例程见各外设子例程
@@ -46,7 +49,10 @@ https://wch.cn
   |      |      |      |      |-- I2C_PEC：使用PEC错误校验，Master/Slave 模式收发例程
   |      |      |      |      |-- I2C_7bit_Interrupt_Mode：使用中断进行收发例程
   |      |      |      |-- IAP
-  |      |      |      |      |-- V00X_APP：APP跳转IAP例程     
+  |      |      |      |      |-- V00X_APP：APP跳转IAP例程   
+  |      |      |      |-- INT
+  |      |      |      |      |-- Interrupt_VTF：使用VTF IRQ中断例程  
+  |      |      |      |      |-- VectorInRAM：中断向量表在RAM的中断例程  
   |      |      |      |-- IWDG
   |      |      |      |      |-- IWDG：独立看门狗例程  
   |      |      |      |-- OPA
@@ -85,7 +91,12 @@ https://wch.cn
   |      |      |      |      |-- TIM_DMA：定时器使用DMA例程
   |      |      |      |      |-- SLTIM_DMA：精简定时器使用DMA例程
   |      |      |      |      |-- Encoder：定时器编码器例程
-  |      |      |      |-- TOUCHKEY：TouchKey检测例程
+  |      |      |      |-- TOUCHKEY
+  |      |      |      |      |-- TOUCHKEY：TouchKey检测例程
+  |      |      |      |      |-- Touch_EX001：触摸按键综合演示例程  
+  |      |      |      |      |-- Touch_EX002：8按键触摸例程 
+  |      |      |      |      |-- TKYLIB：触摸按键库
+  |      |      |      |      |-- DOC_SCH_PCB：原理图及使用说明  
   |      |      |      |-- USART
   |      |      |      |      |-- USART_DMA：USART使用DMA，Master/Slave 模式收发例程
   |      |      |      |      |-- USART_HalfDuplex：单线半双工模式，Master/Slave 模式收发例程

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT  *******************************
  * File Name          : ch32v00X_opa.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2025/01/07
  * Description        : This file provides all the OPA firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -137,11 +137,11 @@ void OPA_StructInit(OPA_InitTypeDef *OPA_InitStruct)
     OPA_InitStruct->OUT_IE = OUT_IE_OFF;
     OPA_InitStruct->NMI_IE = NMI_IE_OFF;
     OPA_InitStruct->POLL_CH1 = OPA_POLL_CH1_PA2;
-    OPA_InitStruct->POLL_CH2 = OPA_POLL_CH1_PA2;
-    OPA_InitStruct->POLL_CH3 = OPA_POLL_CH1_PA2;
+    OPA_InitStruct->POLL_CH2 = OPA_POLL_CH2_PA2;
+    OPA_InitStruct->POLL_CH3 = OPA_POLL_CH3_PA2;
     OPA_InitStruct->POLL_SEL = OPA_POLL_SEL_SOFT;
     OPA_InitStruct->Mode = OUT_IO_OUT0;
-    OPA_InitStruct->PSEL = OUT_CMP2_ONLY;
+    OPA_InitStruct->PSEL = CHP0;
     OPA_InitStruct->NSEL = CHN_OFF;
     OPA_InitStruct->FB = FB_OFF;
     OPA_InitStruct->PGADIF = PGADIF_OFF;

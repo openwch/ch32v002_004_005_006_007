@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/11/07
+ * Version            : V1.0.1
+ * Date               : 2024/12/23
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -15,7 +15,7 @@
  *OPA PGA routine:
  *OPA1_CHP0--PA2
  *OPA1_OUT--PD4
- *OPA_PGA_Dif £ºOPA1_CHN--PA4
+ *OPA_PGA_Dif--OPA1_CHN--PA4
  *The negative input pin of OPA is an internal pin, and when the positive 
  *input voltage is given, the output gain is 4 times. Differential signal 
  *with bias can be selected, output multiplier and bias voltage can be 
@@ -118,7 +118,6 @@ void ADC_Function_Init(void)
  *            ADC_Channel_7 - ADC Channel7 selected.
  *            ADC_Channel_8 - ADC Channel8 selected.
  *            ADC_Channel_9 - ADC Channel9 selected.
- *            ADC_Channel_10 - ADC Channel10 selected.
  *
  * @return  none
  */

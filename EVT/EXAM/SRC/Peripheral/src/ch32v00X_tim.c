@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : ch32v00X_tim.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.4
+ * Date               : 2025/01/08
  * Description        : This file provides all the TIM firmware functions.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -1102,7 +1102,7 @@ void TIM_ARRPreloadConfig(TIM_TypeDef *TIMx, FunctionalState NewState)
  *
  * @brief   Selects the TIM peripheral Commutation event.
  *
- * @param   TIMx - where x can be 1 to 2 to select the TIM peripheral.
+ * @param   TIMx - where x can be 1 to select the TIM peripheral.
  *          NewState - ENABLE or DISABLE.
  *
  * @return  none
@@ -1146,7 +1146,7 @@ void TIM_SelectCCDMA(TIM_TypeDef *TIMx, FunctionalState NewState)
  *
  * @brief   DSets or Resets the TIM peripheral Capture Compare Preload Control bit.
  *        reset values  .
- * @param   TIMx - where x can be 1 to 2 to select the TIM peripheral.
+ * @param   TIMx - where x can be 1 to select the TIM peripheral.
  *          NewState - ENABLE or DISABLE.
  *
  * @return  none
