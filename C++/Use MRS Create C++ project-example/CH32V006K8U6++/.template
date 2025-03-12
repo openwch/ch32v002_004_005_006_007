@@ -1,0 +1,17 @@
+Mcu Type=CH32V002/4/5/6/7
+Address=0x08000000
+Target Path=obj/CH32V006K8U6++.hex
+Erase All=true
+Program=true
+Verify=true
+Reset=true
+
+Vendor=WCH
+Link=WCH-Link
+Toolchain=RISC-V
+Series=CH32V006
+RTOS=NoneOS
+MCU=CH32V006K8U6
+Description=Website: https://www.wch.cn/downloads/CH32V00XRM_PDF.html\nThe CH32V00X series is an industrial-grade general-purpose microcontroller based on the 32-bit RISC-V instruction set and architecture. Using highland barley V2C kernel, RV32EmC instruction set, support level 2 interrupt nesting. This series of products is loaded with a wealth of peripheral interfaces and functional modules. Its internal organizational structure meets low cost and low power embedded application scenarios.
+
+PeripheralVersion=1.3
