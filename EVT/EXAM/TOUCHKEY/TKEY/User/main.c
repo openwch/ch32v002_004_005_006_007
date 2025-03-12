@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2024/12/23
+ * Version            : V1.0.2
+ * Date               : 2025/02/11
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -13,7 +13,7 @@
 /*
  *@Note
  *Touchkey detection routine:
- *This example demonstrates channel 2 (PA2), which is a Touchkey application.
+ *This example demonstrates channel 2 (PC4), which is a Touchkey application.
  *
  */
 
@@ -33,12 +33,12 @@ void Touch_Key_Init(void)
 	GPIO_InitTypeDef GPIO_InitStructure={0};
 	ADC_InitTypeDef ADC_InitStructure={0};
 
-	RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOA, ENABLE );
+	RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOC, ENABLE );
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_ADC1, ENABLE );
 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
+	GPIO_Init(GPIOC, &GPIO_InitStructure);
 
 	RCC_ADCCLKConfig(RCC_PCLK2_Div8);
 
@@ -77,7 +77,7 @@ void Touch_Key_Init(void)
 u16 Touch_Key_Adc(u8 ch)
 {
   ADC_RegularChannelConfig(ADC1, ch, 1, ADC_SampleTime_CyclesMode7 );
-  TKey1->IDATAR1 =0x80;  //Charging Time
+  TKey1->IDATAR1 =0x20;  //Charging Time
   TKey1->RDATAR =0x8;   //Discharging Time
   while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC ))
       ;
