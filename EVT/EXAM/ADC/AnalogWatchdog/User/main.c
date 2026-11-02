@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2025/01/08
+ * Version            : V1.0.2
+ * Date               : 2026/10/16
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -257,20 +257,28 @@ void ADC1_IRQHandler(void)
 {
 #if  (ADC_MODE_WDT == SCAN_MODE_WDT)
     if(ADC_GetAnalogWatchdogFlagStatus( ADC1, ADC_AnalogWatchdog_0_FLAG)){
+    	#if 0
         printf( "Enter AnalogWatchdog-1 Interrupt\r\n" );
+		#endif
     }
     ADC_ClearAnalogWatchdogFlag( ADC1, ADC_AnalogWatchdog_0_FLAG);
     if(ADC_GetAnalogWatchdogFlagStatus( ADC1, ADC_AnalogWatchdog_1_FLAG)){
+		#if 0
         printf( "Enter AnalogWatchdog-2 Interrupt\r\n" );
+		#endif
     }
     ADC_ClearAnalogWatchdogFlag( ADC1, ADC_AnalogWatchdog_1_FLAG);
     if(ADC_GetAnalogWatchdogFlagStatus( ADC1, ADC_AnalogWatchdog_2_FLAG)){
+		#if 0
         printf( "Enter AnalogWatchdog-3 Interrupt\r\n" );
+		#endif
     }
     ADC_ClearAnalogWatchdogFlag( ADC1, ADC_AnalogWatchdog_2_FLAG);
 #endif
     if(ADC_GetITStatus( ADC1, ADC_IT_AWD)){
+	#if 0
         printf( "Enter AnalogWatchdog Interrupt\r\n" );
+	#endif
     }
     ADC_ClearITPendingBit( ADC1, ADC_IT_AWD);
 }

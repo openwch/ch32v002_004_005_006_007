@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.2
- * Date               : 2025/02/11
+ * Version            : V1.0.3
+ * Date               : 2026/10/16
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -110,7 +110,7 @@ int main(void)
 	while(1)
 	{
 	    ADC_val = Touch_Key_Adc(ADC_Channel_2);
-	    printf("TouckKey Value:%d\r\n",ADC_val);
+	    printf("TouchKey Value:%d\r\n",ADC_val);
 	    Delay_Ms(500);
 	}
 }

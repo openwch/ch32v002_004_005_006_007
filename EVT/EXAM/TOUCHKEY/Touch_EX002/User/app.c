@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : app.c
  * Author             : WCH
- * Version            : V1.0.2
- * Date               : 2026/08/27
+ * Version            : V1.0.4
+ * Date               : 2026/10/16
  * Description        : Touch Key Routines
  *******************************************************************************/
 
@@ -64,6 +64,7 @@ void        TKY_dataProcess( void )
         touch_Scan();
     }
 #if PRINT_EN
+
     if ( print_time >= 500 )
     {
         print_time = 0;
@@ -76,99 +77,99 @@ void        TKY_dataProcess( void )
     case KEY_NONE : break;
     case KEY_0_DOWN :
         TKY_KeyBacklightOut( 0, ENABLE );
-        PRINT( "KEY_1_DOWN !\n" );
+  
         break;
     case KEY_0_LONG :
         TKY_KeyBacklightOut( 0, ENABLE );
-        PRINT( "KEY_1_LONG !\n" );
+      
         break;
     case KEY_0_UP :
         TKY_KeyBacklightOut( 0, DISABLE );
-        PRINT( "KEY_1_UP   !\n" );
+    
         break;
     case KEY_1_DOWN :
         TKY_KeyBacklightOut( 1, ENABLE );
-        PRINT( "KEY_2_DOWN !\n" );
+       
         break;
     case KEY_1_LONG :
         TKY_KeyBacklightOut( 1, ENABLE );
-        PRINT( "KEY_2_UP   !\n" );
+
         break;
     case KEY_1_UP :
         TKY_KeyBacklightOut( 1, DISABLE );
-        PRINT( "KEY_2_LONG !\n" );
+    
         break;
     case KEY_2_DOWN :
         TKY_KeyBacklightOut( 2, ENABLE );
-        PRINT( "KEY_3_DOWN !\n" );
+     
         break;
     case KEY_2_LONG :
         TKY_KeyBacklightOut( 2, ENABLE );
-        PRINT( "KEY_3_UP   !\n" );
+
         break;
     case KEY_2_UP :
         TKY_KeyBacklightOut( 2, DISABLE );
-        PRINT( "KEY_3_LONG !\n" );
+
         break;
     case KEY_3_DOWN :
         TKY_KeyBacklightOut( 3, ENABLE );
-        PRINT( "KEY_4_DOWN !\n" );
+
         break;
     case KEY_3_LONG :
         TKY_KeyBacklightOut( 3, ENABLE );
-        PRINT( "KEY_4_UP   !\n" );
+   
         break;
     case KEY_3_UP :
         TKY_KeyBacklightOut( 3, DISABLE );
-        PRINT( "KEY_4_LONG !\n" );
+   
         break;
     case KEY_4_DOWN :
         TKY_KeyBacklightOut( 4, ENABLE );
-        PRINT( "KEY_5_DOWN !\n" );
+        
         break;
     case KEY_4_LONG :
         TKY_KeyBacklightOut( 4, ENABLE );
-        PRINT( "KEY_5_UP   !\n" );
+   
         break;
     case KEY_4_UP :
         TKY_KeyBacklightOut( 4, DISABLE );
-        PRINT( "KEY_5_LONG !\n" );
+
         break;
     case KEY_5_DOWN :
         TKY_KeyBacklightOut( 5, ENABLE );
-        PRINT( "KEY_6_DOWN !\n" );
+   
         break;
     case KEY_5_LONG :
         TKY_KeyBacklightOut( 5, ENABLE );
-        PRINT( "KEY_6_UP   !\n" );
+
         break;
     case KEY_5_UP :
         TKY_KeyBacklightOut( 5, DISABLE );
-        PRINT( "KEY_6_LONG !\n" );
+     
         break;
     case KEY_6_DOWN :
         TKY_KeyBacklightOut( 6, ENABLE );
-        PRINT( "KEY_7_DOWN !\n" );
+
         break;
     case KEY_6_LONG :
         TKY_KeyBacklightOut( 6, ENABLE );
-        PRINT( "KEY_7_UP   !\n" );
+
         break;
     case KEY_6_UP :
         TKY_KeyBacklightOut( 6, DISABLE );
-        PRINT( "KEY_7_LONG !\n" );
+      
         break;
     case KEY_7_DOWN :
         TKY_KeyBacklightOut( 7, ENABLE );
-        PRINT( "KEY_8_DOWN !\n" );
+   
         break;
     case KEY_7_LONG :
         TKY_KeyBacklightOut( 7, ENABLE );
-        PRINT( "KEY_8_UP   !\n" );
+      
         break;
     case KEY_7_UP :
         TKY_KeyBacklightOut( 7, DISABLE );
-        PRINT( "KEY_8_LONG !\n" );
+
         break;
     default : break;
     }
@@ -254,9 +255,9 @@ static void TKY_PeripheralInit( void )
 }
 
 /********************************************
- * @fn      TIM3_UP_IRQHandler
+ * @fn      TIM2_IRQHandler
  *
- * @brief   This function handles TIM1 interrupt.
+ * @brief   This function handles TIM2 interrupt.
  *
  * @return  none
  */

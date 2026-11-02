@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.1
- * Date               : 2026/08/18
+ * Version            : V1.0.2
+ * Date               : 2026/10/14
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -13,7 +13,7 @@
 /*
  *@Note
  *FLASH erase/read/write, and fast programming:
- *Includes Standard Erase and Program, Fast Erase and Program.
+ *Includes Fast Erase and Program.
  *It is recommended to use the erase function - FLASH_ROM_ERASE.
  *It is recommended to use the program function - FLASH_ROM_WRITE. 
 */
@@ -137,7 +137,7 @@ int main(void)
     printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
 
     Flash_Test_Fast();
-
+    Option_Byte_CFG();
     while(1);
 }
 

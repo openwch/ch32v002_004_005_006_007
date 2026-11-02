@@ -16,13 +16,13 @@
 #include <stdlib.h>
 /******************************************************************************/
 
-u32 Program_addr = FLASH_Base;
-u32 Verify_addr = FLASH_Base;
-u8 Verify_Star_flag = 0;
-u8 Fast_Program_Buf[390];
-u32 Program_Buf[64];
-u16 CodeLen = 0;
-u8 End_Flag = 0;
+vu32 Program_addr = FLASH_Base;
+vu32 Verify_addr = FLASH_Base;
+vu8 Verify_Star_flag = 0;
+vu8 Fast_Program_Buf[512];
+vu32 Program_Buf[64];
+vu16 CodeLen = 0;
+vu8 End_Flag = 0;
 u8 EP2_Rx_Buffer[USBD_DATA_SIZE+4];
 #define  isp_cmd_t   ((isp_cmd  *)EP2_Rx_Buffer)
 
@@ -81,9 +81,9 @@ void Program_Buf_Modify(void)
  */
 u8 RecData_Deal(void)
 {
-    u8 i, s, Lenth;
+    u8 i, s, Length;
 
-    Lenth = isp_cmd_t->UART.Len;
+    Length = isp_cmd_t->UART.Len;
 
     switch ( isp_cmd_t->UART.Cmd) {
         case CMD_IAP_ERASE:
@@ -93,10 +93,10 @@ u8 RecData_Deal(void)
             break;
 
         case CMD_IAP_PROM:
-            for (i = 0; i < Lenth; i++) {
+            for (i = 0; i < Length; i++) {
                 Fast_Program_Buf[CodeLen + i] = isp_cmd_t->UART.data[i];
             }
-            CodeLen += Lenth;
+            CodeLen += Length;
             if (CodeLen >= 256) {
 
                 CH32_IAP_Program(Program_addr, (u32*) Fast_Program_Buf);
@@ -128,14 +128,14 @@ u8 RecData_Deal(void)
             }
 
             s = ERR_SUCCESS;
-            for (i = 0; i < Lenth; i++) {
+            for (i = 0; i < Length; i++) {
                 if (isp_cmd_t->UART.data[i] != *(u8*) (Verify_addr + i)) {
                     s = ERR_ERROR;
                     break;
                 }
             }
 
-            Verify_addr += Lenth;
+            Verify_addr += Length;
 
             break;
 
@@ -146,8 +146,8 @@ u8 RecData_Deal(void)
             Verify_addr = FLASH_Base;
 
             s = ERR_End;
-            FLASH_ROM_ERASE(CalAddr & 0xFFFFFF00,256);
             Program_Buf_Modify();
+            FLASH_ROM_ERASE(CalAddr & 0xFFFFFF00,256);
             CH32_IAP_Program(CalAddr & 0xFFFFFF00,(u32*)Program_Buf);
 
             break;

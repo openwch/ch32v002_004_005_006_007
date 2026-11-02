@@ -306,9 +306,9 @@ void TKY_WheelSliderLedProcess (uint16_t pros)
 }
 
 /********************************************
- * @fn      TIM3_UP_IRQHandler
+ * @fn      TIM2_IRQHandler
  *
- * @brief   This function handles TIM1 interrupt.
+ * @brief   This function handles TIM2 interrupt.
  *
  * @return  none
  */

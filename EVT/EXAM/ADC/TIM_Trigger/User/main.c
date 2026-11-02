@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
 * File Name          : main.c
 * Author             : WCH
-* Version            : V1.0.1
-* Date               : 2025/01/09
+* Version            : V1.0.2
+* Date               : 2026/10/16
 * Description        : Main program body.
 *********************************************************************************
 * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -22,7 +22,8 @@
 #include "debug.h"
 
 /* Global Variable */
-
+vu8  IntResponse=0 ;
+vu16 ADC_val ;
 /*********************************************************************
  * @fn      ADC_Function_Init
  *
@@ -72,13 +73,13 @@ void ADC_Function_Init(void)
 }
 
 /*********************************************************************
- * @fn      EXTI_Event_Init
+ * @fn      TIM1_PWM_Init
  *
- * @brief   Initializes EXTI.
+ * @brief   Initializes PWM.
  *
  * @return  none
  */
-void TIM1_PWM_In(u16 arr, u16 psc, u16 ccp)
+void TIM1_PWM_Init(u16 arr, u16 psc, u16 ccp)
 {
     GPIO_InitTypeDef        GPIO_InitStructure = {0};
     TIM_OCInitTypeDef       TIM_OCInitStructure = {0};
@@ -130,9 +131,15 @@ int main(void)
     printf("SystemClk:%d\r\n", SystemCoreClock);
     printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
     ADC_Function_Init();
-    TIM1_PWM_In(4800,100,2400);
+    TIM1_PWM_Init(4800,100,2400);
     while(1)
     {
+         if(IntResponse == 1)
+        {
+			 printf("ADC Extline trigger conversion...\r\n");
+			 printf("JADC-%04d\r\n", ADC_val);
+			 IntResponse = 0;
+        }
 
     }
 }
@@ -148,13 +155,12 @@ void ADC1_IRQHandler(void) __attribute__((interrupt("WCH-Interrupt-fast")));
  */
 void ADC1_IRQHandler(void)
 {
-    u16 ADC_val;
 
     if(ADC_GetITStatus(ADC1, ADC_IT_JEOC))
     {
-        printf("ADC Extline trigger conversion...\r\n");
+        IntResponse = 1;
         ADC_val = ADC_GetInjectedConversionValue(ADC1, ADC_InjectedChannel_1);
-        printf("JADC-%04d\r\n", ADC_val);
+     
     }
 
     ADC_ClearITPendingBit(ADC1, ADC_IT_JEOC);

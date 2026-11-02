@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2026/10/16
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -74,7 +74,7 @@ void ADC_Function_Init(void)
 }
 
 /*********************************************************************
- * @fn      TIM1_PWM_In
+ * @fn      TIM1_PWM_Init
  *
  * @brief   Initializes TIM1 PWM output.
  *
@@ -84,18 +84,12 @@ void ADC_Function_Init(void)
  *
  * @return  none
  */
-void TIM1_PWM_In(u16 arr, u16 psc, u16 ccp)
+void TIM1_PWM_Init(u16 arr, u16 psc, u16 ccp)
 {
-    GPIO_InitTypeDef        GPIO_InitStructure = {0};
     TIM_OCInitTypeDef       TIM_OCInitStructure = {0};
     TIM_TimeBaseInitTypeDef TIM_TimeBaseInitStructure = {0};
 
-    RCC_PB2PeriphClockCmd(RCC_PB2Periph_GPIOC | RCC_PB2Periph_TIM1, ENABLE);
-
-    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_30MHz;
-    GPIO_Init(GPIOC, &GPIO_InitStructure);
+    RCC_PB2PeriphClockCmd(RCC_PB2Periph_TIM1, ENABLE);
 
     TIM_TimeBaseInitStructure.TIM_Period = arr;
     TIM_TimeBaseInitStructure.TIM_Prescaler = psc;
@@ -137,12 +131,11 @@ int main(void)
 
     ADC_Function_Init();
 
-    TIM1_PWM_In(1000, 48000 - 1, 500);
+    TIM1_PWM_Init( 1000-1, 48000 - 1, 500 );
 
     while(1)
     {
-        while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));
-        ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
+ 
         while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_JEOC));
         ADC_ClearFlag(ADC1, ADC_FLAG_JEOC);
 
