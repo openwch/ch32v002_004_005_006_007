@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/07/29
+ * Version            : V1.0.1
+ * Date               : 2026/10/16
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -14,7 +14,7 @@
  *@Note
  * Low power, standby mode routine:
  * AWU automatically wakes up
- * This example demonstrates that WFI enters standby mode and wakes up automatically.
+ * This example demonstrates that WFE enters standby mode and wakes up automatically.
  *@Note
  * For the small package model of the chip, there are some pins that have not been led out compared to the largest package, 
  * or some pins that have been packaged but not used. These pins need to be set as pull-down\up inputs to reduce power 
@@ -24,7 +24,7 @@
 #include "debug.h"
 
 /* Global define */
-
+#define LSI_READY_TIMEOUT   200U 
 /* Global Variable */
 
 /*********************************************************************
@@ -84,10 +84,19 @@ int main(void)
     printf("SystemClk:%d\r\n", SystemCoreClock);
     printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
     printf("Standby Mode Test\r\n");
-    printf("0x1FFFF800-%08x\r\n", *(u32*)0x1FFFF800);
 
     RCC_LSICmd(ENABLE);
-    while(RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET);
+    uint32_t lsi_timeout = LSI_READY_TIMEOUT;
+    while ((RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET) && (lsi_timeout-- != 0U))
+    {
+        Delay_Ms(20);
+    }
+    if (RCC_GetFlagStatus(RCC_FLAG_LSIRDY) == RESET)
+    {
+        printf("LSI not ready, timeout!\r\n");
+        return -1;                    
+    }
+
     PWR_AWU_SetPrescaler(PWR_AWU_Prescaler_10240);
     PWR_AWU_SetWindowValue(25);
     PWR_AutoWakeUpCmd(ENABLE);

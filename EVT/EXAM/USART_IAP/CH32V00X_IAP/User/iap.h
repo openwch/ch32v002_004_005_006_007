@@ -47,7 +47,6 @@ struct{
     u8 buf[64+4];
 }other;
 } isp_cmd;
-typedef void (*iapfun)(void);
 
 extern u8 EP2_Rx_Buffer[USBD_DATA_SIZE+4];
 

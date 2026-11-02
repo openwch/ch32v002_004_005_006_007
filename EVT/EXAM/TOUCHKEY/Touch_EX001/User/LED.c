@@ -128,6 +128,7 @@ void TKY_BacklightInit (void)
  */
 void TKY_KeyBacklightOut (uint8_t key, FunctionalState s)
 {
+ 
     if (DISABLE == s)
     {
         BacklightArray[ key ].BacklightStates = 0;

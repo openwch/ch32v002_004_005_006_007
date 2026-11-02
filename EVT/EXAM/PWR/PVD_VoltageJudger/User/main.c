@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
  * File Name          : main.c
  * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2024/01/01
+ * Version            : V1.0.1
+ * Date               : 2026/10/16
  * Description        : Main program body.
  *********************************************************************************
  * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -26,7 +26,6 @@ void PVD_IRQHandler(void)
     if (EXTI_GetITStatus(EXTI_Line8) != RESET)
     {
         Voltage_ThresFlag = !PWR_GetFlagStatus(PWR_FLAG_PVDO);
-        printf("Run at EXTI\r\n");
         EXTI_ClearITPendingBit(EXTI_Line8);
     }
 }
@@ -40,7 +39,7 @@ void PVD_IRQHandler(void)
  * @return   none
  */
 
-void PVD_Init(void)
+static void PVD_Init(void)
 {
     RCC_PB1PeriphClockCmd(RCC_PB1Periph_PWR, ENABLE);
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_AFIO, ENABLE);
@@ -82,7 +81,7 @@ int main(void)
 #else
     USART_Printf_Init( 115200 );
 #endif
-    printf("SystemClk:%d\r\n", SystemCoreClock);
+    printf("SystemClk:%u\r\n", SystemCoreClock);
     printf("ChipID:%08x\r\n", DBGMCU_GetCHIPID());
 
     printf("Voltage judger TEST\r\n");
@@ -93,6 +92,6 @@ int main(void)
     while (1)
     {
         Delay_Ms(250);
-        Voltage_ThresFlag?printf("Voltage is higher than 2.66V\r\n"):printf("Voltage is lower than 2.60V\r\n");
+        Voltage_ThresFlag?printf("Voltage is higher \r\n"):printf("lower \r\n");
     }
 }

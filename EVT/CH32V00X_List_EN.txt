@@ -31,7 +31,7 @@ Directory
   |      |      |      |      |-- Motor
   |      |      |      |      |      |-- Electric_Fan:Application of medium and low speed fans based on FOC three-phase brushless motor
   |      |      |      |      |      |-- voilent_fan: BLDC-based high-speed fan applications
-  |      |      |      |      |      |-- BLDC_Motor：Application of sensorless square wave BLDC motor
+  |      |      |      |      |      |-- BLDC_Motor: Application of sensorless square wave BLDC motor
   |      |      |      |      |-- WUI
   |      |      |      |      |      |-- wui_demo: gui lcd demo
   |      |      |      |-- DMA
@@ -54,8 +54,8 @@ Directory
   |      |      |      |-- IAP
   |      |      |      |      |-- V00X_APP:APP go to IAP routine  
   |      |      |      |-- INT
-  |      |      |      |      |-- Interrupt_VTF：use VTF IRQ interrupt routine  
-  |      |      |      |      |-- VectorInRAM：Interrupt routines for the interrupt vector table in RAM
+  |      |      |      |      |-- Interrupt_VTF: use VTF IRQ interrupt routine  
+  |      |      |      |      |-- VectorInRAM: Interrupt routines for the interrupt vector table in RAM
   |      |      |      |-- IWDG
   |      |      |      |      |-- IWDG: independent watchdog routine
   |      |      |      |-- OPA 
@@ -78,7 +78,7 @@ Directory
   |      |      |      |      |-- SPI_CRC: CRC error check and master/slave mode transceiver routine
   |      |      |      |      |-- SPI_DMA: SPI DMA, master/slave mode transceiver routine
   |      |      |      |-- SDI_Printf
-  |      |      |      |      |-- SDI_Printf：debug interface SDI, virtual serial port.   
+  |      |      |      |      |-- SDI_Printf: debug interface SDI, virtual serial port.   
   |      |      |      |-- SYSTICK
   |      |      |      |      |-- SYSTICK_Interrupt:systick interrupt routine  
   |      |      |      |-- TIM
@@ -96,9 +96,9 @@ Directory
   |      |      |      |      |-- Encode:Timer encoder mode routines
   |      |      |      |-- TOUCHKEY
   |      |      |      |      |-- TOUCHKEY: touchkey detection routine
-  |      |      |      |      |-- Touch_EX001：Comprehensive demonstration of touch keys
-  |      |      |      |      |-- Touch_EX002：8 Key Touch Routines 
-  |      |      |      |      |-- TKYLIB：Touch Button Library
+  |      |      |      |      |-- Touch_EX001: Comprehensive demonstration of touch keys
+  |      |      |      |      |-- Touch_EX002: 8 Key Touch Routines 
+  |      |      |      |      |-- TKYLIB: Touch Button Library
   |      |      |      |      |-- DOC_SCH_PCB: Schematic diagrams and instructions for use 
   |      |      |      |-- USART
   |      |      |      |      |-- USART_DMA: USART DMA, master/slave mode transceiver routine

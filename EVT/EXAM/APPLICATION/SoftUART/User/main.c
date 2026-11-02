@@ -55,7 +55,7 @@ int main(void)
 
     while (1)
     {
-        if (SoftUARTFunc.ReceiveBytes(tmp, 0xff))
+        if (SoftUARTFunc.ReceiveBytes(tmp, 0xff, sizeof(tmp)))
             SoftUARTFunc.TransmitBytes(tmp, 4);
     }
 }

@@ -1,8 +1,8 @@
 /********************************** (C) COPYRIGHT *******************************
 * File Name          : main.c
 * Author             : WCH
-* Version            : V1.0.0
-* Date               : 2024/01/01
+* Version            : V1.0.1
+* Date               : 2026/10/16
 * Description        : Main program body.
 *********************************************************************************
 * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
@@ -12,7 +12,7 @@
 
 /**
  * @note
- * The code initializes the power voltage detector (PVD) and enters low-power stop mode, waking up when
+ * The code initializes the power voltage detector (PVD) and enters low-power standby mode, waking up when
  * the PVD interrupt is triggered.
  */
 #include "debug.h"
@@ -27,7 +27,6 @@ void PVD_IRQHandler(void)
     if (EXTI_GetITStatus(EXTI_Line8) != RESET)
     {
         SystemInit();
-        printf("Run at EXTI\r\n");
         EXTI_ClearITPendingBit(EXTI_Line8);
     }
 }
@@ -41,7 +40,7 @@ void PVD_IRQHandler(void)
  * @return   none
  */
 
-void PVD_Init(void)
+static void PVD_Init(void)
 {
     RCC_PB1PeriphClockCmd(RCC_PB1Periph_PWR, ENABLE);
     RCC_PB2PeriphClockCmd(RCC_PB2Periph_AFIO, ENABLE);
@@ -52,7 +51,7 @@ void PVD_Init(void)
     EXIT_InitStructure.EXTI_Line = EXTI_Line8;
     EXIT_InitStructure.EXTI_LineCmd = ENABLE;
     EXIT_InitStructure.EXTI_Mode = EXTI_Mode_Interrupt;
-    EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling; // 4.2V
+    EXIT_InitStructure.EXTI_Trigger = EXTI_Trigger_Falling;
     EXTI_Init(&EXIT_InitStructure);
 
     NVIC_InitStructure.NVIC_IRQChannel = PVD_IRQn;
@@ -84,7 +83,7 @@ int main(void)
 #else
     USART_Printf_Init( 115200 );
 #endif
-    printf("SystemClk:%d\r\n", SystemCoreClock);
+    printf("SystemClk:%u\r\n", SystemCoreClock);
     printf("ChipID:%08x\r\n", DBGMCU_GetCHIPID());
 
     printf("PVD wakeup TEST\r\n");
